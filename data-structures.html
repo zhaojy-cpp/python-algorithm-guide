@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据结构详解 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            min-height: 100vh;
+        }
+        
+        .code-block {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .complexity-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .structure-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .structure-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .usage-indicator {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="container mx-auto max-w-6xl">
+        <!-- 导航栏 -->
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-4">
+                <a href="present.html" class="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回演示</span>
+                </a>
+            </div>
+            <div class="text-sm text-gray-500">
+                Python算法竞赛指南
+            </div>
+        </div>
+        
+        <!-- 标题区 -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4">数据结构详解</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                掌握核心数据结构，提升算法效率和代码质量
+            </p>
+        </div>
+        
+        <!-- 数组 -->
+        <div class="structure-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-list text-blue-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">数组</h2>
+                        <p class="text-gray-500">Array</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(1) 访问
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">数据结构特点</h3>
+                    <p class="text-gray-600 mb-4">
+                        数组是最基本的数据结构，存储相同类型元素的连续内存空间。支持随机访问，但大小固定，插入删除操作效率较低。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">操作复杂度：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 随机访问：O(1)</li>
+                        <li>• 插入/删除：O(n)</li>
+                        <li>• 查找元素：O(n)</li>
+                        <li>• 内存连续，缓存友好</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div># Python列表就是动态数组</div>
+                        <div>arr = [1, 2, 3, 4, 5]</div>
+                        <div></div>
+                        <div># 访问元素</div>
+                        <div>print(arr[2])  # 输出: 3</div>
+                        <div></div>
+                        <div># 插入元素</div>
+                        <div>arr.insert(2, 10)  # 在索引2插入10</div>
+                        <div></div>
+                        <div># 删除元素</div>
+                        <div>arr.pop(2)  # 删除索引2的元素</div>
+                        <div></div>
+                        <div># 切片操作</div>
+                        <div>sub_arr = arr[1:4]  # 获取子数组</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 链表 -->
+        <div class="structure-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-link text-green-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">链表</h2>
+                        <p class="text-gray-500">Linked List</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(n) 访问
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">数据结构特点</h3>
+                    <p class="text-gray-600 mb-4">
+                        链表通过指针将节点连接起来，每个节点包含数据和指向下一个节点的指针。支持动态大小，插入删除效率高，但随机访问效率低。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">操作复杂度：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 随机访问：O(n)</li>
+                        <li>• 插入/删除：O(1)（已知位置）</li>
+                        <li>• 查找元素：O(n)</li>
+                        <li>• 内存动态分配</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div>class ListNode:</n    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def append(self, val):
+        if not self.head:
+            self.head = ListNode(val)
+        else:
+            curr = self.head
+            while curr.next:
+                curr = curr.next
+            curr.next = ListNode(val)
+    
+    def insert(self, val, pos):
+        new_node = ListNode(val)
+        if pos == 0:
+            new_node.next = self.head
+            self.head = new_node
+        else:
+            curr = self.head
+            for _ in range(pos - 1):
+                if curr:
+                    curr = curr.next
+            if curr:
+                new_node.next = curr.next
+                curr.next = new_node</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 栈 -->
+        <div class="structure-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-layer-group text-purple-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">栈</h2>
+                        <p class="text-gray-500">Stack</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(1) 操作
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">数据结构特点</h3>
+                    <p class="text-gray-600 mb-4">
+                        栈是一种后进先出（LIFO）的数据结构，只能在栈顶进行插入和删除操作。常用于函数调用、表达式求值、括号匹配等场景。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">操作复杂度：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 入栈：O(1)</li>
+                        <li>• 出栈：O(1)</li>
+                        <li>• 查看栈顶：O(1)</li>
+                        <li>• LIFO原则</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div>class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def push(self, item):
+        self.items.append(item)
+    
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+        return None
+    
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+        return None
+    
+    def is_empty(self):
+        return len(self.items) == 0
+    
+    def size(self):
+        return len(self.items)
+
+# 使用示例
+stack = Stack()
+stack.push(1)
+stack.push(2)
+stack.push(3)
+print(stack.pop())  # 输出: 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 队列 -->
+        <div class="structure-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-stream text-red-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">队列</h2>
+                        <p class="text-gray-500">Queue</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(1) 操作
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">数据结构特点</h3>
+                    <p class="text-gray-600 mb-4">
+                        队列是一种先进先出（FIFO）的数据结构，在队尾插入元素，在队头删除元素。常用于任务调度、广度优先搜索、消息队列等场景。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">操作复杂度：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 入队：O(1)</li>
+                        <li>• 出队：O(1)</li>
+                        <li>• 查看队头：O(1)</li>
+                        <li>• FIFO原则</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div>from collections import deque
+
+class Queue:
+    def __init__(self):
+        self.items = deque()
+    
+    def enqueue(self, item):
+        self.items.append(item)
+    
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.popleft()
+        return None
+    
+    def front(self):
+        if not self.is_empty():
+            return self.items[0]
+        return None
+    
+    def is_empty(self):
+        return len(self.items) == 0
+    
+    def size(self):
+        return len(self.items)
+
+# 使用示例
+queue = Queue()
+queue.enqueue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+print(queue.dequeue())  # 输出: 1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 二叉树 -->
+        <div class="structure-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-sitemap text-yellow-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">二叉树</h2>
+                        <p class="text-gray-500">Binary Tree</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(log n)
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">数据结构特点</h3>
+                    <p class="text-gray-600 mb-4">
+                        二叉树是每个节点最多有两个子节点的树形结构。二叉搜索树（BST）是一种特殊的二叉树，左子树所有节点值小于根节点，右子树所有节点值大于根节点。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">操作复杂度：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 查找：O(log n)（平衡树）</li>
+                        <li>• 插入：O(log n)（平衡树）</li>
+                        <li>• 删除：O(log n)（平衡树）</li>
+                        <li>• 层次结构</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div>class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+    
+    def insert(self, val):
+        self.root = self._insert(self.root, val)
+    
+    def _insert(self, node, val):
+        if not node:
+            return TreeNode(val)
+        if val < node.val:
+            node.left = self._insert(node.left, val)
+        else:
+            node.right = self._insert(node.right, val)
+        return node
+    
+    def search(self, val):
+        return self._search(self.root, val)
+    
+    def _search(self, node, val):
+        if not node or node.val == val:
+            return node
+        if val < node.val:
+            return self._search(node.left, val)
+        return self._search(node.right, val)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 哈希表 -->
+        <div class="structure-card bg-white rounded-2xl p-8 shadow-lg">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-hashtag text-indigo-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">哈希表</h2>
+                        <p class="text-gray-500">Hash Table</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(1) 平均
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">数据结构特点</h3>
+                    <p class="text-gray-600 mb-4">
+                        哈希表通过哈希函数将键映射到数组索引，实现快速查找。Python中的字典（dict）和集合（set）就是基于哈希表实现的。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">操作复杂度：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 查找：O(1) 平均</li>
+                        <li>• 插入：O(1) 平均</li>
+                        <li>• 删除：O(1) 平均</li>
+                        <li>• 哈希冲突处理</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div># Python字典就是哈希表
+hash_table = {}
+
+# 插入键值对
+hash_table['name'] = 'Alice'
+hash_table['age'] = 25
+hash_table['city'] = 'New York'
+
+# 查找
+print(hash_table['name'])  # 输出: Alice
+
+# 更新
+hash_table['age'] = 26
+
+# 删除
+del hash_table['city']
+
+# 检查键是否存在
+if 'name' in hash_table:
+    print("Name exists")
+
+# 获取所有键值对
+for key, value in hash_table.items():
+    print(f"{key}: {value}")
+
+# 使用defaultdict避免KeyError
+from collections import defaultdict
+count = defaultdict(int)
+count['a'] += 1  # 自动初始化为0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

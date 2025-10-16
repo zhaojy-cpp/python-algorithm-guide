@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python基础语法 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .concept-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .code-snippet {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第0章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        Python
+                        <span class="text-blue-600">基础语法</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握Python编程基础，为算法竞赛打下坚实基础
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-code text-blue-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">语法基础</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-database text-green-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">数据结构</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-cogs text-purple-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">控制流程</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- Python简介 -->
+                <div class="concept-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i class="fab fa-python text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Python简介</h3>
+                            <p class="text-sm text-gray-500">Introduction</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">简洁语法</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">丰富库支持</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">跨平台</span>
+                            <span class="text-green-600 text-sm">★★★★☆</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                        <p class="text-xs text-blue-800">
+                            Python是算法竞赛的理想选择，语法简洁，开发效率高
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 变量与数据类型 -->
+                <div class="concept-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-cube text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">变量与数据类型</h3>
+                            <p class="text-sm text-gray-500">Variables & Types</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">整数、浮点数</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">字符串</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">列表、元组、字典</span>
+                            <span class="text-green-600 text-sm">★★★★☆</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 输入输出 -->
+                <div class="concept-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-exchange-alt text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">输入与输出</h3>
+                            <p class="text-sm text-gray-500">Input & Output</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">print()函数</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">input()函数</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">格式化输出</span>
+                            <span class="text-yellow-600 text-sm">★★★☆☆</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 运算符 -->
+                <div class="concept-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-calculator text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">运算符</h3>
+                            <p class="text-sm text-gray-500">Operators</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">算术运算符</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">逻辑运算符</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">位运算符</span>
+                            <span class="text-yellow-600 text-sm">★★★☆☆</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            掌握Python基础语法是算法竞赛的第一步
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

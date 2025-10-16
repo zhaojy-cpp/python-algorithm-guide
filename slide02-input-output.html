@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入与输出 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .io-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .io-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .code-snippet {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第2章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        输入与
+                        <span class="text-purple-600">输出</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握Python的输入输出操作，学会与程序交互的基本技能
+                    </p>
+                    
+                    <div class="code-snippet p-4 text-green-400 text-sm">
+                        <div># 基本输入输出</div>
+                        <div>name = input("请输入姓名: ")</div>
+                        <div>print("你好,", name)</div>
+                        <div></div>
+                        <div># 格式化输出</div>
+                        <div>age = 20</div>
+                        <div>print(f"年龄: {age}岁")</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- print()函数 -->
+                <div class="io-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-print text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">print()函数</h3>
+                                <p class="text-sm text-gray-500">Output Function</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">基本用法</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>print("Hello, World!")</div>
+                                <div>print(123)</div>
+                                <div>print(3.14)</div>
+                                <div>print(True)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">多参数输出</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>name = "Alice"</div>
+                                <div>age = 20</div>
+                                <div>print("姓名:", name, "年龄:", age)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">自定义分隔符</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>print(1, 2, 3, sep="-")  # 1-2-3</div>
+                                <div>print("A", "B", "C", sep="")  # ABC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- input()函数 -->
+                <div class="io-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-keyboard text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">input()函数</h3>
+                                <p class="text-sm text-gray-500">Input Function</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">基本输入</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>name = input("请输入姓名: ")</div>
+                                <div>print("你好,", name)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">数字输入</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>age = int(input("请输入年龄: "))</div>
+                                <div>height = float(input("请输入身高: "))</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">多个输入</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 输入多个数字</div>
+                                <div>nums = input().split()</div>
+                                <div>nums = list(map(int, nums))</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 格式化输出 -->
+                <div class="io-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-palette text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">格式化输出</h3>
+                                <p class="text-sm text-gray-500">Formatted Output</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-pink-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">f-string (推荐)</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>name = "Alice"</div>
+                                <div>age = 20</div>
+                                <div>print(f"姓名: {name}, 年龄: {age}")</div>
+                                <div>print(f"π的值: {pi:.2f}")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-teal-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">format()方法</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>print("姓名: {}, 年龄: {}".format(name, age))</div>
+                                <div>print("π的值: {:.2f}".format(pi))</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-orange-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">百分号格式化</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>print("姓名: %s, 年龄: %d" % (name, age))</div>
+                                <div>print("π的值: %.2f" % pi)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 竞赛技巧 -->
+                <div class="io-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-trophy text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">竞赛技巧</h3>
+                                <p class="text-sm text-gray-500">Competition Tips</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">快速读取数字</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 读取一行数字</div>
+                                <div>nums = list(map(int, input().split()))</div>
+                                <div># 读取固定数量</div>
+                                <div>n = int(input())</div>
+                                <div>arr = [int(input()) for _ in range(n)]</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">批量输出</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 输出列表</div>
+                                <div>print(*nums)  # 空格分隔</div>
+                                <div>print(*nums, sep=',')  # 逗号分隔</div>
+                                <div># 输出多行</div>
+                                <div>for num in nums:</div>
+                                <div class="ml-4">print(num)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">性能优化</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 使用sys.stdin加速输入</div>
+                                <div>import sys</div>
+                                <div>input = sys.stdin.readline</div>
+                                <div># 批量输出到缓冲区</div>
+                                <div>output = []</div>
+                                <div>output.append(str(result))</div>
+                                <div>print('\n'.join(output))</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            熟练掌握输入输出是算法竞赛编程的基础技能
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量与数据类型 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .data-type-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .data-type-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .code-snippet {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .complexity-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第1章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        变量与
+                        <span class="text-green-600">数据类型</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握Python中的变量概念和核心数据类型，为算法编程打下基础
+                    </p>
+                    
+                    <div class="code-snippet p-4 text-green-400 text-sm">
+                        <div># 变量赋值</div>
+                        <div>x = 10</div>
+                        <div>name = "Alice"</div>
+                        <div>pi = 3.14159</div>
+                        <div></div>
+                        <div># 数据类型</div>
+                        <div>print(type(x))      # <int></div>
+                        <div>print(type(name))   # <str></div>
+                        <div>print(type(pi))     # <float></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- 基本数据类型 -->
+                <div class="data-type-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-hashtag text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">基本数据类型</h3>
+                                <p class="text-sm text-gray-500">Basic Types</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">整数 (int)</h4>
+                            <p class="text-sm text-gray-600">任意大小的整数，支持大数运算</p>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>x = 12345</div>
+                                <div>y = -67890</div>
+                                <div>big_num = 12345678901234567890</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">浮点数 (float)</h4>
+                            <p class="text-sm text-gray-600">双精度浮点数，科学计数法</p>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>pi = 3.14159</div>
+                                <div>e = 2.71828</div>
+                                <div>scientific = 1.23e-4</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">布尔值 (bool)</h4>
+                            <p class="text-sm text-gray-600">True 或 False，用于逻辑判断</p>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>is_valid = True</div>
+                                <div>is_empty = False</div>
+                                <div>result = 5 > 3  # True</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 容器数据类型 -->
+                <div class="data-type-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-list text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">容器类型</h3>
+                                <p class="text-sm text-gray-500">Container Types</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">列表 (list)</h4>
+                            <p class="text-sm text-gray-600">可变序列，支持增删改查</p>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>numbers = [1, 2, 3, 4, 5]</div>
+                                <div>mixed = [1, "hello", 3.14, True]</div>
+                                <div>empty = []</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">元组 (tuple)</h4>
+                            <p class="text-sm text-gray-600">不可变序列，性能更好</p>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>coordinates = (10, 20)</div>
+                                <div>colors = ("red", "green", "blue")</div>
+                                <div>single = (42,)  # 单元素元组</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">字典 (dict)</h4>
+                            <p class="text-sm text-gray-600">键值对映射，快速查找</p>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>student = {"name": "Alice", "age": 20}</div>
+                                <div>scores = {"math": 95, "english": 88}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 字符串 -->
+                <div class="data-type-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-font text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">字符串</h3>
+                                <p class="text-sm text-gray-500">String</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-pink-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">字符串创建</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>s1 = "Hello World"</div>
+                                <div>s2 = 'Python Programming'</div>
+                                <div>s3 = """多行字符串"""</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-teal-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">常用操作</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>len(s)  # 字符串长度</div>
+                                <div>s.upper()  # 转大写</div>
+                                <div>s.lower()  # 转小写</div>
+                                <div>s.split()  # 分割字符串</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-orange-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">字符串切片</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>s = "Hello World"</div>
+                                <div>s[0:5]  # "Hello"</div>
+                                <div>s[6:]   # "World"</div>
+                                <div>s[::-1] # 反转字符串</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 类型转换 -->
+                <div class="data-type-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-exchange-alt text-yellow-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">类型转换</h3>
+                                <p class="text-sm text-gray-500">Type Conversion</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">数字转换</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>int("123")     # 123</div>
+                                <div>float("3.14")  # 3.14</div>
+                                <div>str(42)       # "42"</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">容器转换</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>list("abc")     # ['a', 'b', 'c']</div>
+                                <div>tuple([1,2,3]) # (1, 2, 3)</div>
+                                <div>set([1,2,2,3]) # {1, 2, 3}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">竞赛技巧</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 快速读取多个数字</div>
+                                <div>nums = list(map(int, input().split()))</div>
+                                <div># 字符串转字符列表</div>
+                                <div>chars = list(input_string)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            熟练掌握数据类型转换是算法编程的基本功
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

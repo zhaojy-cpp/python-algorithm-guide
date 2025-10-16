@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞赛策略与实战技巧</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .strategy-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .strategy-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .tip-icon {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第四章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        竞赛策略与
+                        <span class="text-red-600">实战技巧</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握竞赛中的时间管理、代码优化和临场应变的关键技巧
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 space-y-6">
+                <!-- 解题流程 -->
+                <div class="strategy-item bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-gray-800">标准解题流程</h3>
+                        <div class="text-sm text-gray-500">4个关键步骤</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <div class="step-number w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">1</div>
+                            <h4 class="font-semibold text-gray-800 mb-2">理解题目</h4>
+                            <p class="text-sm text-gray-600">仔细阅读，分析约束条件，确定输入输出格式</p>
+                            <div class="progress-bar mt-3" style="width: 25%"></div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="step-number w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">2</div>
+                            <h4 class="font-semibold text-gray-800 mb-2">设计算法</h4>
+                            <p class="text-sm text-gray-600">选择合适的数据结构和算法，估算复杂度</p>
+                            <div class="progress-bar mt-3" style="width: 50%"></div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="step-number w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">3</div>
+                            <h4 class="font-semibold text-gray-800 mb-2">编写代码</h4>
+                            <p class="text-sm text-gray-600">实现核心逻辑，处理边界情况</p>
+                            <div class="progress-bar mt-3" style="width: 75%"></div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="step-number w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">4</div>
+                            <h4 class="font-semibold text-gray-800 mb-2">测试调试</h4>
+                            <p class="text-sm text-gray-600">构造测试用例，验证正确性</p>
+                            <div class="progress-bar mt-3" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 实战技巧 -->
+                <div class="grid grid-cols-2 gap-6">
+                    <!-- 时间管理 -->
+                    <div class="strategy-item bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="tip-icon w-12 h-12 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-clock text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">时间管理</h3>
+                                <p class="text-sm text-gray-500">Time Management</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-700 text-sm">简单题</span>
+                                <span class="text-green-600 text-sm font-medium">5-10分钟</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-700 text-sm">中等题</span>
+                                <span class="text-yellow-600 text-sm font-medium">15-30分钟</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-700 text-sm">困难题</span>
+                                <span class="text-red-600 text-sm font-medium">45-60分钟</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                            <p class="text-xs text-blue-800">
+                                <i class="fas fa-lightbulb mr-1"></i>
+                                建议先解决所有简单题，再攻克中等题，最后处理困难题
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 代码优化 -->
+                    <div class="strategy-item bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="tip-icon w-12 h-12 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-rocket text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">代码优化</h3>
+                                <p class="text-sm text-gray-500">Code Optimization</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                                <span class="text-gray-700 text-sm">使用内置函数和数据结构</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                                <span class="text-gray-700 text-sm">避免不必要的循环嵌套</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                                <span class="text-gray-700 text-sm">合理使用缓存和记忆化</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                                <span class="text-gray-700 text-sm">选择合适的数据结构</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                            <p class="text-xs text-green-800">
+                                <i class="fas fa-trophy mr-1"></i>
+                                优秀的代码不仅正确，更要高效和可读
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-medal text-yellow-500 mr-2"></i>
+            竞赛成功的关键在于系统化的解题方法和持续的练习
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

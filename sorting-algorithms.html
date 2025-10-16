@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排序算法详解 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            min-height: 100vh;
+        }
+        
+        .code-block {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .complexity-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .algorithm-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .algorithm-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="container mx-auto max-w-6xl">
+        <!-- 导航栏 -->
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-4">
+                <a href="present.html" class="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回演示</span>
+                </a>
+            </div>
+            <div class="text-sm text-gray-500">
+                Python算法竞赛指南
+            </div>
+        </div>
+        
+        <!-- 标题区 -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4">排序算法详解</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                掌握核心排序算法，提升算法竞赛中的解题效率和代码质量
+            </p>
+        </div>
+        
+        <!-- 快速排序 -->
+        <div class="algorithm-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-bolt text-blue-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">快速排序</h2>
+                        <p class="text-gray-500">Quick Sort</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(n log n)
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">算法原理</h3>
+                    <p class="text-gray-600 mb-4">
+                        快速排序采用分治策略，通过选择一个基准元素将数组分成两部分，左边部分小于基准，右边部分大于基准，然后递归地对两部分进行排序。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">关键特点：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 平均时间复杂度：O(n log n)</li>
+                        <li>• 最坏时间复杂度：O(n²)</li>
+                        <li>• 空间复杂度：O(log n)</li>
+                        <li>• 不稳定排序</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div>def quick_sort(arr):</div>
+                        <div class="ml-4">if len(arr) <= 1:</div>
+                        <div class="ml-8">return arr</div>
+                        <div class="ml-4">pivot = arr[len(arr) // 2]</div>
+                        <div class="ml-4">left = [x for x in arr if x < pivot]</div>
+                        <div class="ml-4">middle = [x for x in arr if x == pivot]</div>
+                        <div class="ml-4">right = [x for x in arr if x > pivot]</div>
+                        <div class="ml-4">return quick_sort(left) + middle + quick_sort(right)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 归并排序 -->
+        <div class="algorithm-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-layer-group text-green-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">归并排序</h2>
+                        <p class="text-gray-500">Merge Sort</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(n log n)
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">算法原理</h3>
+                    <p class="text-gray-600 mb-4">
+                        归并排序采用分治策略，将数组分成两半，递归地对两半进行排序，然后将两个有序数组合并成一个有序数组。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">关键特点：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 时间复杂度：O(n log n)</li>
+                        <li>• 空间复杂度：O(n)</li>
+                        <li>• 稳定排序</li>
+                        <li>• 适合链表排序</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div>def merge_sort(arr):</div>
+                        <div class="ml-4">if len(arr) <= 1:</div>
+                        <div class="ml-8">return arr</div>
+                        <div class="ml-4">mid = len(arr) // 2</div>
+                        <div class="ml-4">left = merge_sort(arr[:mid])</div>
+                        <div class="ml-4">right = merge_sort(arr[mid:])</div>
+                        <div class="ml-4">return merge(left, right)</div>
+                        <div></div>
+                        <div>def merge(left, right):</div>
+                        <div class="ml-4">result = []</div>
+                        <div class="ml-4">i = j = 0</div>
+                        <div class="ml-4">while i < len(left) and j < len(right):</div>
+                        <div class="ml-8">if left[i] <= right[j]:</div>
+                        <div class="ml-12">result.append(left[i])</div>
+                        <div class="ml-12">i += 1</div>
+                        <div class="ml-8">else:</div>
+                        <div class="ml-12">result.append(right[j])</div>
+                        <div class="ml-12">j += 1</div>
+                        <div class="ml-4">return result + left[i:] + right[j:]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 堆排序 -->
+        <div class="algorithm-card bg-white rounded-2xl p-8 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-mountain text-purple-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">堆排序</h2>
+                        <p class="text-gray-500">Heap Sort</p>
+                    </div>
+                </div>
+                <div class="complexity-badge text-white px-4 py-2 rounded-full">
+                    O(n log n)
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">算法原理</h3>
+                    <p class="text-gray-600 mb-4">
+                        堆排序利用堆这种数据结构进行排序，首先构建最大堆，然后重复地将堆顶元素（最大值）与末尾元素交换，并重新调整堆。
+                    </p>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-2">关键特点：</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>• 时间复杂度：O(n log n)</li>
+                        <li>• 空间复杂度：O(1)</li>
+                        <li>• 不稳定排序</li>
+                        <li>• 适合求TopK问题</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Python实现</h3>
+                    <div class="code-block p-4 text-green-400 text-sm">
+                        <div>import heapq</div>
+                        <div></div>
+                        <div>def heap_sort(arr):</div>
+                        <div class="ml-4">heap = [-x for x in arr]  # 最大堆</div>
+                        <div class="ml-4">heapq.heapify(heap)</div>
+                        <div class="ml-4">result = []</div>
+                        <div class="ml-4">while heap:</div>
+                        <div class="ml-8">result.append(-heapq.heappop(heap))</div>
+                        <div class="ml-4">return result</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 竞赛应用 -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">竞赛中的应用技巧</h2>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">时间复杂度</h3>
+                    <p class="text-sm text-gray-600">在竞赛中，当n≤10⁵时，O(n log n)的排序算法通常都能通过</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-memory text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">内存优化</h3>
+                    <p class="text-sm text-gray-600">快速排序空间复杂度最低，适合内存限制严格的题目</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-code text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">代码简洁</h3>
+                    <p class="text-sm text-gray-600">Python内置sort()使用Timsort，通常比手写排序更高效</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

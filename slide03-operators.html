@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .operator-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .operator-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .code-snippet {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .operator-type {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第3章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        运算符
+                        <span class="text-red-600">Operators</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握Python中的各类运算符，提升编程效率和算法实现能力
+                    </p>
+                    
+                    <div class="code-snippet p-4 text-green-400 text-sm">
+                        <div># 算术运算</div>
+                        <div>a = 10 + 5  # 15</div>
+                        <div>b = 10 - 3  # 7</div>
+                        <div>c = 10 * 2  # 20</div>
+                        <div>d = 10 / 3  # 3.333...</div>
+                        <div>e = 10 // 3  # 3</div>
+                        <div>f = 10 % 3  # 1</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- 算术运算符 -->
+                <div class="operator-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-calculator text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">算术运算符</h3>
+                                <p class="text-sm text-gray-500">Arithmetic Operators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">+</div>
+                                <div class="text-xs text-gray-600">加法</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">-</div>
+                                <div class="text-xs text-gray-600">减法</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">*</div>
+                                <div class="text-xs text-gray-600">乘法</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">/</div>
+                                <div class="text-xs text-gray-600">除法</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">//</div>
+                                <div class="text-xs text-gray-600">整除</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">%</div>
+                                <div class="text-xs text-gray-600">取模</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-snippet p-3 text-green-400 text-xs">
+                            <div># 算术运算示例</div>
+                            <div>a = 17</div>
+                            <div>b = 5</div>
+                            <div>print(a + b)   # 22</div>
+                            <div>print(a - b)   # 12</div>
+                            <div>print(a * b)   # 85</div>
+                            <div>print(a / b)   # 3.4</div>
+                            <div>print(a // b)  # 3</div>
+                            <div>print(a % b)   # 2</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 比较运算符 -->
+                <div class="operator-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-balance-scale text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">比较运算符</h3>
+                                <p class="text-sm text-gray-500">Comparison Operators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">==</div>
+                                <div class="text-xs text-gray-600">等于</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">!=</div>
+                                <div class="text-xs text-gray-600">不等于</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800"><</div>
+                                <div class="text-xs text-gray-600">小于</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">></div>
+                                <div class="text-xs text-gray-600">大于</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800"><=</div>
+                                <div class="text-xs text-gray-600">小于等于</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">>=</div>
+                                <div class="text-xs text-gray-600">大于等于</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-snippet p-3 text-green-400 text-xs">
+                            <div># 比较运算示例</div>
+                            <div>x = 10</div>
+                            <div>y = 20</div>
+                            <div>print(x == y)   # False</div>
+                            <div>print(x != y)   # True</div>
+                            <div>print(x < y)    # True</div>
+                            <div>print(x > y)    # False</div>
+                            <div>print(x <= y)   # True</div>
+                            <div>print(x >= y)   # False</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 逻辑运算符 -->
+                <div class="operator-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-brain text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">逻辑运算符</h3>
+                                <p class="text-sm text-gray-500">Logical Operators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">and</div>
+                                <div class="text-xs text-gray-600">与</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">or</div>
+                                <div class="text-xs text-gray-600">或</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">not</div>
+                                <div class="text-xs text-gray-600">非</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-snippet p-3 text-green-400 text-xs">
+                            <div># 逻辑运算示例</div>
+                            <div>a = True</div>
+                            <div>b = False</div>
+                            <div>print(a and b)   # False</div>
+                            <div>print(a or b)    # True</div>
+                            <div>print(not a)     # False</div>
+                            <div>print(not b)     # True</div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 text-sm mb-2">短路特性</h5>
+                            <p class="text-xs text-yellow-700">
+                                Python中的逻辑运算符具有短路特性，可以提高程序效率
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 位运算符 -->
+                <div class="operator-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-microchip text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">位运算符</h3>
+                                <p class="text-sm text-gray-500">Bitwise Operators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">&</div>
+                                <div class="text-xs text-gray-600">按位与</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">|</div>
+                                <div class="text-xs text-gray-600">按位或</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">^</div>
+                                <div class="text-xs text-gray-600">按位异或</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">~</div>
+                                <div class="text-xs text-gray-600">按位取反</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800"><<</div>
+                                <div class="text-xs text-gray-600">左移</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-gray-800">>></div>
+                                <div class="text-xs text-gray-600">右移</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-snippet p-3 text-green-400 text-xs">
+                            <div># 位运算示例</div>
+                            <div>a = 12  # 1100</div>
+                            <div>b = 10  # 1010</div>
+                            <div>print(a & b)   # 8 (1000)</div>
+                            <div>print(a | b)   # 14 (1110)</div>
+                            <div>print(a ^ b)   # 6 (0110)</div>
+                            <div>print(a << 1)  # 24 (11000)</div>
+                            <div>print(a >> 1)  # 6 (0110)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            熟练运用各类运算符可以大大简化算法实现
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

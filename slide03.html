@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据结构核心内容</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .data-structure-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .data-structure-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .complexity-indicator {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .usage-bar {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            height: 4px;
+            border-radius: 2px;
+            transition: width 0.8s ease;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-3 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第二章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        数据结构
+                        <span class="text-indigo-600">核心</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握竞赛中必备的数据结构，提升算法效率的关键
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-9 grid grid-cols-3 gap-6">
+                <!-- 线性结构 -->
+                <div class="data-structure-item bg-white rounded-2xl p-6 shadow-lg" onclick="window.location.href='data-structures.html'">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-list text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-xl">线性结构</h3>
+                        <p class="text-gray-500 text-sm">Linear Structures</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">数组</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">O(1)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 95%"></div>
+                            <p class="text-xs text-gray-500 mt-1">随机访问，固定大小</p>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">链表</span>
+                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">O(n)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 80%"></div>
+                            <p class="text-xs text-gray-500 mt-1">动态大小，顺序访问</p>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">栈</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">O(1)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 85%"></div>
+                            <p class="text-xs text-gray-500 mt-1">LIFO，后进先出</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">队列</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">O(1)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 75%"></div>
+                            <p class="text-xs text-gray-500 mt-1">FIFO，先进先出</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-blue-600 text-sm">
+                            <i class="fas fa-hand-pointer mr-1"></i>
+                            点击查看详细内容
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 树形结构 -->
+                <div class="data-structure-item bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-sitemap text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-xl">树形结构</h3>
+                        <p class="text-gray-500 text-sm">Tree Structures</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">二叉树</span>
+                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">O(log n)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 90%"></div>
+                            <p class="text-xs text-gray-500 mt-1">层次结构，递归处理</p>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">二叉搜索树</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">O(log n)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 85%"></div>
+                            <p class="text-xs text-gray-500 mt-1">有序存储，快速查找</p>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">堆</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">O(log n)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 80%"></div>
+                            <p class="text-xs text-gray-500 mt-1">优先队列，最值维护</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">并查集</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">O(α(n))</span>
+                            </div>
+                            <div class="usage-bar" style="width: 70%"></div>
+                            <p class="text-xs text-gray-500 mt-1">集合合并，连通性</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 高级结构 -->
+                <div class="data-structure-item bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-cubes text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-xl">高级结构</h3>
+                        <p class="text-gray-500 text-sm">Advanced Structures</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">哈希表</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">O(1)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 95%"></div>
+                            <p class="text-xs text-gray-500 mt-1">键值映射，快速查找</p>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">线段树</span>
+                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">O(log n)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 75%"></div>
+                            <p class="text-xs text-gray-500 mt-1">区间查询，单点更新</p>
+                        </div>
+                        
+                        <div class="border-b border-gray-100 pb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">字典树</span>
+                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">O(L)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 65%"></div>
+                            <p class="text-xs text-gray-500 mt-1">字符串处理，前缀匹配</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700 font-medium">图结构</span>
+                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">O(V+E)</span>
+                            </div>
+                            <div class="usage-bar" style="width: 90%"></div>
+                            <p class="text-xs text-gray-500 mt-1">网络关系，路径搜索</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-chart-line text-blue-500 mr-2"></i>
+            使用率基于竞赛题目出现频率统计
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

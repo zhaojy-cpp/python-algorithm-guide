@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算法设计技巧</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .technique-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .technique-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .technique-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .technique-card:hover::before {
+            left: 100%;
+        }
+        
+        .difficulty-badge {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+        }
+        
+        .example-code {
+            background: #2d3748;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第三章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        算法设计
+                        <span class="text-green-600">技巧</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        学习高级算法设计方法，提升解决问题的思维能力
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-blue-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">分治策略</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-layer-group text-green-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">动态规划</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-coins text-purple-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">贪心算法</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- 分治策略 -->
+                <div class="technique-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-divide text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">分治策略</h3>
+                                <p class="text-sm text-gray-500">Divide & Conquer</p>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge text-white px-3 py-1 rounded-full text-sm">
+                            中级
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            将大问题分解为小问题，分别解决后合并结果
+                        </p>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">快速排序</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">归并排序</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">最近点对</span>
+                            </div>
+                        </div>
+                        
+                        <div class="example-code p-3 text-green-400">
+                            <div>def divide_conquer(problem):</div>
+                            <div class="ml-4">if problem.is_base():</div>
+                            <div class="ml-8">return problem.solve()</div>
+                            <div class="ml-4">subproblems = problem.divide()</div>
+                            <div class="ml-4">results = [divide_conquer(sp) for sp in subproblems]</div>
+                            <div class="ml-4">return problem.merge(results)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 动态规划 -->
+                <div class="technique-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-layer-group text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">动态规划</h3>
+                                <p class="text-sm text-gray-500">Dynamic Programming</p>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge text-white px-3 py-1 rounded-full text-sm">
+                            高级
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            通过记忆化存储避免重复计算，解决重叠子问题
+                        </p>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">背包问题</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">最长公共子序列</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">区间DP</span>
+                            </div>
+                        </div>
+                        
+                        <div class="example-code p-3 text-green-400">
+                            <div>dp = [0] * (n + 1)</div>
+                            <div>for i in range(1, n + 1):</div>
+                            <div class="ml-4">for j in range(i):</div>
+                            <div class="ml-8">dp[i] = max(dp[i], dp[j] + cost[j][i])</div>
+                            <div>return dp[n]</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 贪心算法 -->
+                <div class="technique-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-coins text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">贪心算法</h3>
+                                <p class="text-sm text-gray-500">Greedy Algorithm</p>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge text-white px-3 py-1 rounded-full text-sm">
+                            中级
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            每步选择局部最优解，最终得到全局最优解
+                        </p>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">活动选择问题</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">哈夫曼编码</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">最小生成树</span>
+                            </div>
+                        </div>
+                        
+                        <div class="example-code p-3 text-green-400">
+                            <div>def greedy_solution(items):</div>
+                            <div class="ml-4">items.sort(key=lambda x: x.value/x.weight)</div>
+                            <div class="ml-4">total_value = 0</div>
+                            <div class="ml-4">for item in items:</div>
+                            <div class="ml-8">if can_take(item):</div>
+                            <div class="ml-12">total_value += item.value</div>
+                            <div class="ml-4">return total_value</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 回溯算法 -->
+                <div class="technique-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-undo text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">回溯算法</h3>
+                                <p class="text-sm text-gray-500">Backtracking</p>
+                            </div>
+                        </div>
+                        <div class="difficulty-badge text-white px-3 py-1 rounded-full text-sm">
+                            中级
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            通过试错和回溯探索所有可能的解空间
+                        </p>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">八皇后问题</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">数独求解</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                <span class="text-sm text-gray-700">组合生成</span>
+                            </div>
+                        </div>
+                        
+                        <div class="example-code p-3 text-green-400">
+                            <div>def backtrack(path, choices):</div>
+                            <div class="ml-4">if is_solution(path):</div>
+                            <div class="ml-8">return path</div>
+                            <div class="ml-4">for choice in choices:</div>
+                            <div class="ml-8">if is_valid(path, choice):</div>
+                            <div class="ml-12">path.append(choice)</div>
+                            <div class="ml-12">result = backtrack(path, choices)</div>
+                            <div class="ml-12">path.pop()</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-brain text-purple-500 mr-2"></i>
+            掌握这些设计模式，解决80%的算法问题
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

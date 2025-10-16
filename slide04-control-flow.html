@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程控制 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .control-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .control-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .code-snippet {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .flow-arrow {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第4章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        流程
+                        <span class="text-indigo-600">控制</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握条件判断和分支控制，让程序根据不同情况做出正确决策
+                    </p>
+                    
+                    <div class="code-snippet p-4 text-green-400 text-sm">
+                        <div># if语句基本结构</div>
+                        <div>if condition:</div>
+                        <div class="ml-4"># 条件为真时执行</div>
+                        <div>    do_something()</div>
+                        <div>elif other_condition:</div>
+                        <div class="ml-4"># 其他条件</div>
+                        <div>    do_something_else()</div>
+                        <div>else:</div>
+                        <div class="ml-4"># 以上条件都不满足</div>
+                        <div>    do_default()</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- if语句基础 -->
+                <div class="control-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-code-branch text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">if语句基础</h3>
+                                <p class="text-sm text-gray-500">Basic if Statement</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">基本语法</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>if condition:</div>
+                                <div class="ml-4"># 条件为真时执行</div>
+                                <div>    statement1</div>
+                                <div>    statement2</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">实例：判断奇偶</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>num = int(input("请输入数字: "))</div>
+                                <div>if num % 2 == 0:</div>
+                                <div class="ml-4">print(f"{num} 是偶数")</div>
+                                <div>else:</div>
+                                <div class="ml-4">print(f"{num} 是奇数")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-blue-800 text-sm mb-2">注意事项</h5>
+                            <p class="text-xs text-blue-700">
+                                Python使用缩进来表示代码块，必须保持一致（通常4个空格）
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 多分支结构 -->
+                <div class="control-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-sitemap text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">多分支结构</h3>
+                                <p class="text-sm text-gray-500">Multiple Branches</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">if-elif-else</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>score = int(input("请输入分数: "))</div>
+                                <div>if score >= 90:</div>
+                                <div class="ml-4">grade = "A"</div>
+                                <div>elif score >= 80:</div>
+                                <div class="ml-4">grade = "B"</div>
+                                <div>elif score >= 70:</div>
+                                <div class="ml-4">grade = "C"</div>
+                                <div>else:</div>
+                                <div class="ml-4">grade = "D"</div>
+                                <div>print(f"等级: {grade}")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">嵌套if语句</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>num = int(input())</div>
+                                <div>if num > 0:</div>
+                                <div class="ml-4">if num % 2 == 0:</div>
+                                <div class="ml-8">print("正偶数")</div>
+                                <div class="ml-4">else:</div>
+                                <div class="ml-8">print("正奇数")</div>
+                                <div>elif num < 0:</div>
+                                <div class="ml-4">print("负数")</div>
+                                <div>else:</div>
+                                <div class="ml-4">print("零")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-green-800 text-sm mb-2">最佳实践</h5>
+                            <p class="text-xs text-green-700">
+                                尽量使用elif而不是多个if，这样逻辑更清晰，效率更高
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 条件表达式 -->
+                <div class="control-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-compress-alt text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">条件表达式</h3>
+                                <p class="text-sm text-gray-500">Conditional Expression</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-pink-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">三元运算符</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 语法: value_if_true if condition else value_if_false</div>
+                                <div>age = int(input("请输入年龄: "))</div>
+                                <div>status = "成年" if age >= 18 else "未成年"</div>
+                                <div>print(status)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-teal-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">链式条件</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>x = int(input())</div>
+                                <div>result = ("正数" if x > 0 else</div>
+                                <div class="ml-4">"负数" if x < 0 else "零")</div>
+                                <div>print(result)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-purple-800 text-sm mb-2">使用场景</h5>
+                            <p class="text-xs text-purple-700">
+                                适合简单的条件赋值，使代码更简洁，但复杂逻辑仍建议使用if-else
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 实用案例 -->
+                <div class="control-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">实用案例</h3>
+                                <p class="text-sm text-gray-500">Practical Examples</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">判断闰年</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>year = int(input("请输入年份: "))</div>
+                                <div>if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):</div>
+                                <div class="ml-4">print(f"{year} 是闰年")</div>
+                                <div>else:</div>
+                                <div class="ml-4">print(f"{year} 不是闰年")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">求最大值</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>a, b, c = map(int, input().split())</div>
+                                <div>max_val = a</div>
+                                <div>if b > max_val:</div>
+                                <div class="ml-4">max_val = b</div>
+                                <div>if c > max_val:</div>
+                                <div class="ml-4">max_val = c</div>
+                                <div>print(f"最大值: {max_val}")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-red-800 text-sm mb-2">竞赛技巧</h5>
+                            <p class="text-xs text-red-700">
+                                在算法竞赛中，合理使用条件判断可以优化算法复杂度
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            熟练的流程控制能力是编写复杂算法的基础
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

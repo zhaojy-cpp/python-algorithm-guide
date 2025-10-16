@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环 - Python算法竞赛指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .loop-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .loop-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .code-snippet {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .loop-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第5章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        循环
+                        <span class="text-orange-600">Loops</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握for循环和while循环，实现重复操作的自动化处理
+                    </p>
+                    
+                    <div class="code-snippet p-4 text-green-400 text-sm">
+                        <div># for循环遍历</div>
+                        <div>for i in range(5):</div>
+                        <div class="ml-4">print(i)  # 0, 1, 2, 3, 4</div>
+                        <div></div>
+                        <div># while循环</div>
+                        <div>i = 0</div>
+                        <div>while i < 5:</div>
+                        <div class="ml-4">print(i)</div>
+                        <div class="ml-4">i += 1</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- for循环 -->
+                <div class="loop-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="loop-icon w-12 h-12 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-list-ol text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">for循环</h3>
+                                <p class="text-sm text-gray-500">For Loop</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">range()函数</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># range(stop)</div>
+                                <div>for i in range(5):</div>
+                                <div class="ml-4">print(i)  # 0,1,2,3,4</div>
+                                <div></div>
+                                <div># range(start, stop)</div>
+                                <div>for i in range(2, 6):</div>
+                                <div class="ml-4">print(i)  # 2,3,4,5</div>
+                                <div></div>
+                                <div># range(start, stop, step)</div>
+                                <div>for i in range(0, 10, 2):</div>
+                                <div class="ml-4">print(i)  # 0,2,4,6,8</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">遍历序列</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 遍历列表</div>
+                                <div>fruits = ["apple", "banana", "orange"]</div>
+                                <div>for fruit in fruits:</div>
+                                <div class="ml-4">print(fruit)</div>
+                                <div></div>
+                                <div># 遍历字符串</div>
+                                <div>for char in "Python":</div>
+                                <div class="ml-4">print(char)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-blue-800 text-sm mb-2">使用技巧</h5>
+                            <p class="text-xs text-blue-700">
+                                使用enumerate()可以同时获取索引和值：for i, val in enumerate(list)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- while循环 -->
+                <div class="loop-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="loop-icon w-12 h-12 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-sync-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">while循环</h3>
+                                <p class="text-sm text-gray-500">While Loop</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">基本语法</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>i = 0</div>
+                                <div>while i < 5:</div>
+                                <div class="ml-4">print(i)</div>
+                                <div class="ml-4">i += 1</div>
+                                <div></div>
+                                <div># 无限循环</div>
+                                <div>while True:</div>
+                                <div class="ml-4"># 需要在某个条件下break</div>
+                                <div class="ml-4">if condition:</div>
+                                <div class="ml-8">break</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">猜数字游戏</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>secret = 42</div>
+                                <div>guess = int(input("猜数字: "))</div>
+                                <div>while guess != secret:</div>
+                                <div class="ml-4">if guess < secret:</div>
+                                <div class="ml-8">print("太小了")</div>
+                                <div class="ml-4">else:</div>
+                                <div class="ml-8">print("太大了")</div>
+                                <div class="ml-4">guess = int(input("再试一次: "))</div>
+                                <div>print("猜对了!")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-red-800 text-sm mb-2">注意事项</h5>
+                            <p class="text-xs text-red-700">
+                                确保循环条件最终会变为False，否则会造成无限循环
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 循环控制 -->
+                <div class="loop-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="loop-icon w-12 h-12 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-stopwatch text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">循环控制</h3>
+                                <p class="text-sm text-gray-500">Loop Control</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-pink-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">break语句</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 找到第一个质数</div>
+                                <div>for num in range(2, 100):</div>
+                                <div class="ml-4">for i in range(2, int(num**0.5) + 1):</div>
+                                <div class="ml-8">if num % i == 0:</div>
+                                <div class="ml-12">break</div>
+                                <div class="ml-4">else:</div>
+                                <div class="ml-8">print(f"找到质数: {num}")</div>
+                                <div class="ml-8">break</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-teal-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">continue语句</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div># 跳过偶数</div>
+                                <div>for i in range(1, 11):</div>
+                                <div class="ml-4">if i % 2 == 0:</div>
+                                <div class="ml-8">continue</div>
+                                <div class="ml-4">print(i)  # 只打印奇数</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-purple-800 text-sm mb-2">使用区别</h5>
+                            <p class="text-xs text-purple-700">
+                                break完全终止循环，continue跳过当前迭代继续下一次
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 经典算法 -->
+                <div class="loop-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="loop-icon w-12 h-12 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-trophy text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">经典算法</h3>
+                                <p class="text-sm text-gray-500">Classic Algorithms</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">阶乘计算</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>n = int(input("请输入数字: "))</div>
+                                <div>factorial = 1</div>
+                                <div>for i in range(1, n + 1):</div>
+                                <div class="ml-4">factorial *= i</div>
+                                <div>print(f"{n}! = {factorial}")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold text-gray-800">斐波那契数列</h4>
+                            <div class="code-snippet p-2 text-green-400 text-xs mt-2">
+                                <div>n = int(input())</div>
+                                <div>a, b = 0, 1</div>
+                                <div>for i in range(n):</div>
+                                <div class="ml-4">print(a, end=' ')</div>
+                                <div class="ml-4">a, b = b, a + b</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-3 rounded-lg">
+                            <h5 class="font-semibold text-orange-800 text-sm mb-2">竞赛应用</h5>
+                            <p class="text-xs text-orange-700">
+                                循环是算法实现的基础，几乎所有算法都需要用到循环结构
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            熟练运用循环结构是编写高效算法的关键
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

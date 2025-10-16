@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算法基础知识</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e4dc 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .algorithm-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .algorithm-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .complexity-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .code-snippet {
+            background: #1a202c;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-8">
+    <div class="container mx-auto max-w-7xl">
+        <div class="grid grid-cols-12 gap-8 h-full">
+            <!-- 左侧标题区 -->
+            <div class="col-span-4 flex flex-col justify-center">
+                <div class="space-y-6">
+                    <div class="text-sm font-medium text-gray-500 tracking-wider uppercase">
+                        第一章
+                    </div>
+                    <h1 class="section-title text-gray-800">
+                        算法
+                        <span class="text-blue-600">基础知识</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        掌握竞赛编程的核心算法思想，从基础到进阶的系统化学习路径
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="col-span-8 grid grid-cols-2 gap-6">
+                <!-- 排序算法 -->
+                <div class="algorithm-card bg-white rounded-2xl p-6 shadow-lg" onclick="window.location.href='sorting-algorithms.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-sort-amount-down text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">排序算法</h3>
+                                <p class="text-sm text-gray-500">Sorting Algorithms</p>
+                            </div>
+                        </div>
+                        <div class="complexity-badge text-white px-3 py-1 rounded-full text-sm">
+                            O(n log n)
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">快速排序</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">归并排序</span>
+                            <span class="text-green-600 text-sm">★★★★☆</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">堆排序</span>
+                            <span class="text-yellow-600 text-sm">★★★☆☆</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-blue-600 text-sm">
+                            <i class="fas fa-hand-pointer mr-1"></i>
+                            点击查看详细内容
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 搜索算法 -->
+                <div class="algorithm-card bg-white rounded-2xl p-6 shadow-lg" onclick="window.location.href='search-algorithms.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-search text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">搜索算法</h3>
+                                <p class="text-sm text-gray-500">Search Algorithms</p>
+                            </div>
+                        </div>
+                        <div class="complexity-badge text-white px-3 py-1 rounded-full text-sm">
+                            O(log n)
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">二分搜索</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">深度优先搜索</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">广度优先搜索</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-green-600 text-sm">
+                            <i class="fas fa-hand-pointer mr-1"></i>
+                            点击查看详细内容
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 动态规划 -->
+                <div class="algorithm-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-layer-group text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">动态规划</h3>
+                                <p class="text-sm text-gray-500">Dynamic Programming</p>
+                            </div>
+                        </div>
+                        <div class="complexity-badge text-white px-3 py-1 rounded-full text-sm">
+                            O(n²)
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">背包问题</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">最长子序列</span>
+                            <span class="text-green-600 text-sm">★★★★☆</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">区间DP</span>
+                            <span class="text-yellow-600 text-sm">★★★☆☆</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 贪心算法 -->
+                <div class="algorithm-card bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-coins text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">贪心算法</h3>
+                                <p class="text-sm text-gray-500">Greedy Algorithm</p>
+                            </div>
+                        </div>
+                        <div class="complexity-badge text-white px-3 py-1 rounded-full text-sm">
+                            O(n log n)
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">活动选择</span>
+                            <span class="text-green-600 text-sm">★★★★☆</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">哈夫曼编码</span>
+                            <span class="text-yellow-600 text-sm">★★★☆☆</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700">最小生成树</span>
+                            <span class="text-green-600 text-sm">★★★★★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部提示 -->
+        <div class="absolute bottom-8 left-8 text-gray-500 text-sm">
+            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+            点击卡片查看详细实现和例题
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

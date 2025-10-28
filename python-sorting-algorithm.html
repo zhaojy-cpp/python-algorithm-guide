@@ -1,0 +1,1504 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Python排序算法可视化报告（竞赛版）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #64748b;
+            --accent: #e94560;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 280px;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 320px;
+            padding: 2rem;
+            max-width: calc(100vw - 360px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .algorithm-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .visualization-container {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .complexity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .complexity-table th,
+        .complexity-table td {
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .complexity-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .complexity-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .citation {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-left: 0.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .citation:hover {
+            background: #d32f4f;
+            transform: translateY(-1px);
+        }
+        
+        .optimization-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+        
+        .algorithm-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+        }
+        
+        /* Mermaid chart styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: var(--surface);
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none; /* 防止触摸设备上的默认行为 */
+            -webkit-user-select: none; /* 防止文本选择 */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: var(--surface);
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-primary);
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 1280px) {
+            .toc-fixed {
+                position: relative;
+                width: 100%;
+                margin-bottom: 2rem;
+                left: 0;
+            }
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .algorithm-card {
+                padding: 1rem;
+            }
+            .complexity-table {
+                font-size: 0.8rem;
+            }
+            .complexity-table th,
+            .complexity-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <h3 class="text-lg font-bold mb-4 serif">目录导航</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#introduction" class="text-blue-600 hover:text-blue-800 transition-colors">概述</a>
+        </li>
+        <li>
+          <a href="#quick-sort" class="hover:text-blue-600 transition-colors">快速排序</a>
+          <ul class="ml-4 mt-1 space-y-1 text-xs text-gray-600">
+            <li>
+              <a href="#quick-sort-principle" class="hover:text-blue-600">算法原理</a>
+            </li>
+            <li>
+              <a href="#quick-sort-visualization" class="hover:text-blue-600">动画展示</a>
+            </li>
+            <li>
+              <a href="#quick-sort-basic" class="hover:text-blue-600">基础实现</a>
+            </li>
+            <li>
+              <a href="#quick-sort-optimized" class="hover:text-blue-600">优化策略</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#merge-sort" class="hover:text-blue-600 transition-colors">归并排序</a>
+          <ul class="ml-4 mt-1 space-y-1 text-xs text-gray-600">
+            <li>
+              <a href="#merge-sort-principle" class="hover:text-blue-600">算法原理</a>
+            </li>
+            <li>
+              <a href="#merge-sort-visualization" class="hover:text-blue-600">动画展示</a>
+            </li>
+            <li>
+              <a href="#merge-sort-basic" class="hover:text-blue-600">基础实现</a>
+            </li>
+            <li>
+              <a href="#merge-sort-optimized" class="hover:text-blue-600">优化策略</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#performance-analysis" class="hover:text-blue-600 transition-colors">性能分析</a>
+        </li>
+        <li>
+          <a href="#conclusion" class="hover:text-blue-600 transition-colors">总结</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-grid">
+          <div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 serif italic">
+              Python排序算法
+              <br/>
+              <span class="text-yellow-300">可视化报告</span>
+            </h1>
+            <p class="text-xl opacity-90 mb-6">
+              竞赛版：深入理解快速排序与归并排序的原理、实现与优化
+            </p>
+            <div class="flex items-center space-x-4">
+              <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">
+                <i class="fas fa-code mr-2"></i>Python可视化
+              </span>
+              <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">
+                <i class="fas fa-chart-line mr-2"></i>算法竞赛
+              </span>
+            </div>
+          </div>
+          <div class="text-center">
+            <img src="https://kimi-web-img.moonshot.cn/img/img2018.cnblogs.com/e694b89fdb255be0356f125b1a3e0985b903e7ab.png" alt="抽象排序算法概念图" class="rounded-lg shadow-2xl mx-auto max-w-full h-auto" size="medium" aspect="wide" query="排序算法抽象概念" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-tachometer-alt text-blue-600 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">性能优化</h3>
+          </div>
+          <p class="text-gray-600">深入分析算法的时间空间复杂度，提供多种优化策略</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-eye text-green-600 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">可视化演示</h3>
+          </div>
+          <p class="text-gray-600">通过Matplotlib动画直观展示算法执行过程</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-trophy text-purple-600 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">竞赛导向</h3>
+          </div>
+          <p class="text-gray-600">针对算法竞赛需求，提供高效实现和优化技巧</p>
+        </div>
+      </div>
+
+      <!-- Introduction -->
+      <section id="introduction" class="algorithm-card">
+        <h2 class="text-3xl font-bold mb-6 serif">概述</h2>
+        <p class="text-lg text-gray-700 mb-6">
+          本报告旨在提供一个全面且深入的Python排序算法可视化分析，特别针对算法竞赛的需求。报告不仅涵盖了算法的基本原理和代码实现，更侧重于通过动画展示来直观理解算法的执行过程，并提供了从算法逻辑和代码实现两个层面的优化策略。所有动画均基于Python的Matplotlib库实现，确保了代码的可复现性和可扩展性。
+        </p>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+          <p class="text-blue-800 font-medium">
+            <i class="fas fa-lightbulb mr-2"></i>
+            通过本报告，您将掌握快速排序和归并排序的核心原理，学会在竞赛环境下进行算法优化，并能够通过可视化方式深入理解算法的执行过程。
+          </p>
+        </div>
+      </section>
+
+      <!-- Quick Sort Section -->
+      <section id="quick-sort" class="algorithm-card">
+        <div class="flex items-start mb-6">
+          <div class="algorithm-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-4 serif">快速排序 (Quick Sort)</h2>
+            <p class="text-lg text-gray-700">
+              快速排序是算法竞赛中最常用、最高效的排序算法之一。它以其平均情况下的优异性能（O(n log n)）和原地排序（in-place）的特性而备受青睐。然而，其最坏情况下的性能（O(n²)）和对基准元素选择的敏感性，也使其成为算法优化和面试考察的重点。
+            </p>
+          </div>
+        </div>
+
+        <div id="quick-sort-principle" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">算法原理</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-3 text-blue-600">分治法思想</h4>
+              <p class="text-gray-700 mb-4">
+                快速排序的核心思想是&#34;分而治之&#34;（Divide and Conquer）。它通过一趟排序将待排记录分割成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，然后分别对这两部分记录继续进行排序。
+              </p>
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TD
+                  A[&#34;原始数组&#34;] --&gt; B[&#34;选择基准 pivot&#34;]
+                  B --&gt; C[&#34;分区操作&#34;]
+                  C --&gt; D[&#34;小于基准的部分&#34;]
+                  C --&gt; E[&#34;基准元素&#34;]
+                  C --&gt; F[&#34;大于基准的部分&#34;]
+                  D --&gt; G[&#34;递归排序左子数组&#34;]
+                  F --&gt; H[&#34;递归排序右子数组&#34;]
+                  G --&gt; I[&#34;合并结果&#34;]
+                  H --&gt; I
+                  I --&gt; J[&#34;最终有序数组&#34;]
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-3 text-blue-600">核心步骤</h4>
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                <li><strong>选择基准</strong>：从数组中选择一个元素作为基准</li>
+                <li><strong>分区操作</strong>：重新排列数组，使小于基准的元素在左，大于基准的元素在右</li>
+                <li><strong>递归调用</strong>：对左右两个子数组递归地进行快速排序</li>
+              </ol>
+            </div>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-3">复杂度分析</h4>
+          <table class="complexity-table">
+            <thead>
+              <tr>
+                <th>情况</th>
+                <th>时间复杂度</th>
+                <th>空间复杂度</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>最好情况</td>
+                <td>O(n log n)</td>
+                <td>O(log n)</td>
+                <td>每次分区都能均匀划分</td>
+              </tr>
+              <tr>
+                <td>平均情况</td>
+                <td>O(n log n)</td>
+                <td>O(log n)</td>
+                <td>随机输入的期望性能</td>
+              </tr>
+              <tr>
+                <td>最坏情况</td>
+                <td>O(n²)</td>
+                <td>O(n)</td>
+                <td>输入已排序且选择端点作为基准</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="quick-sort-visualization" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">动画展示</h3>
+
+          <div class="visualization-container">
+            <h4 class="text-xl font-semibold mb-4">可视化原理</h4>
+            <p class="text-gray-700 mb-6">
+              我们使用Python的Matplotlib库创建动画，通过颜色编码增强算法的可读性。橙色表示基准元素，绿色表示分区边界，黄色表示当前比较的元素，紫色表示即将交换的元素。
+              <a href="https://github.com/jsantana21/Sorting-Algorithm-Visualizer" class="citation" target="_blank">[362]</a>
+            </p>
+
+            <div class="bg-gray-100 p-6 rounded-lg">
+              <img src="https://kimi-web-img.moonshot.cn/img/sweetloser.com/9c7fdd4cfcde65e37a050007c4f11cbe2198a16b.png" alt="快速排序算法分区步骤的示意图" class="mx-auto rounded-lg shadow-md max-w-full h-auto" size="medium" aspect="wide" query="快速排序分区过程" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <p class="text-center text-sm text-gray-600 mt-3">
+                快速排序分区过程的可视化展示：基准元素的选择、分区操作的执行以及递归调用的层次结构
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="quick-sort-basic" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">基础版代码实现</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>基础快速排序（Lomuto分区方案）</span>
+              <button class="text-blue-400 hover:text-blue-300 text-sm">
+                <i class="fas fa-copy mr-1"></i>复制
+              </button>
+            </div>
+            <pre><code>import random
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+def quick_sort(arr, low, high, frames):
+    if low &lt; high:
+        # 分区并获取基准索引
+        pivot_index = partition(arr, low, high, frames)
+        # 递归排序左子数组
+        quick_sort(arr, low, pivot_index - 1, frames)
+        # 递归排序右子数组
+        quick_sort(arr, pivot_index + 1, high, frames)
+
+def partition(arr, low, high, frames):
+    # 选择最右元素作为基准
+    pivot = arr[high]
+    i = low - 1  # 较小元素的索引
+    
+    frames.append(arr.copy())  # 记录分区前的状态
+    
+    for j in range(low, high):
+        if arr[j] &lt;= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+            frames.append(arr.copy())  # 记录交换后的状态
+
+    # 将基准元素放到正确位置
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    frames.append(arr.copy())  # 记录基准就位后的状态
+    return i + 1</code></pre>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+            <h5 class="font-semibold text-yellow-800 mb-2">
+              <i class="fas fa-exclamation-triangle mr-2"></i>基础版局限性
+            </h5>
+            <ul class="text-yellow-700 space-y-1">
+              <li>• 固定选择最右元素作为基准，对已排序数组性能退化</li>
+              <li>• 对重复元素较多的数组效率不高</li>
+              <li>• 小数组情况下递归开销过大</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="quick-sort-optimized" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">优化版代码实现</h3>
+
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="optimization-badge">三数取中法</span>
+            <span class="optimization-badge">三路划分</span>
+            <span class="optimization-badge">插入排序优化</span>
+            <span class="optimization-badge">尾递归优化</span>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>完全优化的快速排序</span>
+              <button class="text-blue-400 hover:text-blue-300 text-sm">
+                <i class="fas fa-copy mr-1"></i>复制
+              </button>
+            </div>
+            <pre><code>INSERTION_SORT_THRESHOLD = 10
+
+def median_of_three(arr, low, high):
+    mid = (low + high) // 2
+    a, b, c = arr[low], arr[mid], arr[high]
+    # 返回三个元素的中位数的索引
+    if a &gt; b:
+        if a &lt; c: return low
+        elif b &gt; c: return mid
+        else: return high
+    else:
+        if a &gt; c: return low
+        elif b &lt; c: return mid
+        else: return high
+
+def three_way_partition(arr, low, high, frames):
+    pivot_index = median_of_three(arr, low, high)
+    arr[pivot_index], arr[low] = arr[low], arr[pivot_index]
+    pivot = arr[low]
+
+    lt = low  # 小于区的右边界
+    gt = high  # 大于区的左边界
+    i = low + 1  # 当前考察元素
+
+    while i &lt;= gt:
+        if arr[i] &lt; pivot:
+            arr[lt+1], arr[i] = arr[i], arr[lt+1]
+            lt += 1
+            i += 1
+        elif arr[i] &gt; pivot:
+            arr[gt], arr[i] = arr[i], arr[gt]
+            gt -= 1
+        else:
+            i += 1
+        frames.append(arr.copy())
+
+    arr[low], arr[lt] = arr[lt], arr[low]
+    return lt - 1, gt
+
+def insertion_sort(arr, low, high, frames):
+    for i in range(low + 1, high + 1):
+        key = arr[i]
+        j = i - 1
+        while j &gt;= low and arr[j] &gt; key:
+            arr[j + 1] = arr[j]
+            j -= 1
+            frames.append(arr.copy())
+        arr[j + 1] = key
+        frames.append(arr.copy())
+
+def quick_sort_optimized(arr, low, high, frames):
+    while low &lt; high:
+        if high - low + 1 &lt; INSERTION_SORT_THRESHOLD:
+            insertion_sort(arr, low, high, frames)
+            break
+
+        lt, gt = three_way_partition(arr, low, high, frames)
+        
+        # 优先处理较小的子数组
+        if lt - low &lt; high - gt:
+            quick_sort_optimized(arr, low, lt, frames)
+            low = gt + 1  # 尾递归优化
+        else:
+            quick_sort_optimized(arr, gt + 1, high, frames)
+            high = lt  # 尾递归优化</code></pre>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
+              <h5 class="font-semibold text-green-800 mb-2">优化效果</h5>
+              <ul class="text-green-700 space-y-1 text-sm">
+                <li>• <strong>三数取中法</strong>：避免最坏情况，提高分区平衡性</li>
+                <li>• <strong>三路划分</strong>：高效处理重复元素</li>
+                <li>• <strong>小数组优化</strong>：减少递归开销</li>
+                <li>• <strong>尾递归优化</strong>：降低栈空间使用</li>
+              </ul>
+            </div>
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/camo.githubusercontent.com/1be20214c72588cc0df96995aedcffea87d48494" alt="展示快速排序算法优化技术效果的图表" class="rounded-lg shadow-md max-w-full h-auto" size="medium" aspect="wide" query="快速排序算法优化效果" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Merge Sort Section -->
+      <section id="merge-sort" class="algorithm-card">
+        <div class="flex items-start mb-6">
+          <div class="algorithm-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-4 serif">归并排序 (Merge Sort)</h2>
+            <p class="text-lg text-gray-700">
+              归并排序是另一种基于分治法的高效排序算法。与快速排序不同，归并排序是一种稳定的排序算法，这意味着相等元素的相对顺序在排序后不会改变。这使得它在需要保持稳定性的应用场景中非常有用。
+              <a href="https://www.geeksforgeeks.org/dsa/merge-sort/" class="citation" target="_blank">[119]</a>
+            </p>
+          </div>
+        </div>
+
+        <div id="merge-sort-principle" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">算法原理</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-3 text-blue-600">分治法应用</h4>
+              <p class="text-gray-700 mb-4">
+                归并排序建立在归并操作基础上，将待排序数组不断分解成更小的子数组，直到每个子数组只包含一个元素，然后将这些有序子数组合并成完整有序数组。
+                <a href="https://www.cxyxiaowu.com/2176.html" class="citation" target="_blank">[83]</a>
+              </p>
+
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TD
+                  A[&#34;[38, 27, 43, 3, 9, 82, 10]&#34;] --&gt; B[&#34;[38, 27, 43, 3]&#34;]
+                  A --&gt; C[&#34;[9, 82, 10]&#34;]
+                  B --&gt; D[&#34;[38, 27]&#34;]
+                  B --&gt; E[&#34;[43, 3]&#34;]
+                  C --&gt; F[&#34;[9]&#34;]
+                  C --&gt; G[&#34;[82, 10]&#34;]
+                  D --&gt; H[&#34;[38]&#34;]
+                  D --&gt; I[&#34;[27]&#34;]
+                  E --&gt; J[&#34;[43]&#34;]
+                  E --&gt; K[&#34;[3]&#34;]
+                  G --&gt; L[&#34;[82]&#34;]
+                  G --&gt; M[&#34;[10]&#34;]
+                  H --&gt; N[&#34;合并&#34;]
+                  I --&gt; N
+                  J --&gt; O[&#34;合并&#34;]
+                  K --&gt; O
+                  L --&gt; P[&#34;合并&#34;]
+                  M --&gt; P
+                  N --&gt; Q[&#34;[27, 38]&#34;]
+                  O --&gt; R[&#34;[3, 43]&#34;]
+                  F --&gt; S[&#34;[9]&#34;]
+                  P --&gt; T[&#34;[10, 82]&#34;]
+                  Q --&gt; U[&#34;合并&#34;]
+                  R --&gt; U
+                  S --&gt; V[&#34;合并&#34;]
+                  T --&gt; V
+                  U --&gt; W[&#34;[3, 27, 38, 43]&#34;]
+                  V --&gt; X[&#34;[9, 10, 82]&#34;]
+                  W --&gt; Y[&#34;最终合并&#34;]
+                  X --&gt; Y
+                  Y --&gt; Z[&#34;[3, 9, 10, 27, 38, 43, 82]&#34;]
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-3 text-blue-600">核心操作</h4>
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                <li><strong>分解</strong>：将数组从中间分成两个子数组</li>
+                <li><strong>递归排序</strong>：对两个子数组递归调用归并排序</li>
+                <li><strong>合并</strong>：将两个已排序的子数组合并成一个有序数组</li>
+              </ol>
+              <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                <h5 class="font-semibold text-blue-800 mb-2">稳定性保证</h5>
+                <p class="text-blue-700 text-sm">
+                  在合并过程中，当遇到相等元素时，优先选择左侧子数组的元素，确保相等元素的相对顺序不变。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-3">复杂度分析</h4>
+          <table class="complexity-table">
+            <thead>
+              <tr>
+                <th>特性</th>
+                <th>最好情况</th>
+                <th>平均情况</th>
+                <th>最坏情况</th>
+                <th>空间复杂度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>时间复杂度</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n log n)</td>
+                <td>O(n)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-gray-600 text-sm mt-2">
+            归并排序的时间复杂度非常稳定，不受输入数据分布的影响
+            <a href="https://cloud.tencent.com/developer/article/2336546" class="citation" target="_blank">[108]</a>
+          </p>
+        </div>
+
+        <div id="merge-sort-visualization" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">动画展示</h3>
+
+          <div class="visualization-container">
+            <h4 class="text-xl font-semibold mb-4">可视化实现</h4>
+            <p class="text-gray-700 mb-6">
+              归并排序的可视化采用生成器模式，在每次关键操作后使用
+              <code class="bg-gray-100 px-2 py-1 rounded">yield</code>返回当前数组状态。动画清晰地展示了&#34;分而治之&#34;的完整过程。
+              <a href="https://www.geeksforgeeks.org/python/visualization-of-merge-sort-using-matplotlib/" class="citation" target="_blank">[99]</a>
+            </p>
+
+            <div class="bg-gray-100 p-6 rounded-lg">
+              <img src="https://kimi-web-img.moonshot.cn/imagegen/20251026/02176147123205366d1c8020e86d046d5a326892ba1cd25df0b11_0.jpeg" alt="归并排序算法合并步骤的抽象可视化" class="mx-auto rounded-lg shadow-md max-w-full h-auto" size="medium" aspect="wide" style="linedrawing" query="归并排序合并过程" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <p class="text-center text-sm text-gray-600 mt-3">
+                归并排序的分解与合并过程可视化：递归调用栈的深度和广度展示
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="merge-sort-basic" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">基础版代码实现</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>递归实现（简化版）</span>
+              <button class="text-blue-400 hover:text-blue-300 text-sm">
+                <i class="fas fa-copy mr-1"></i>复制
+              </button>
+            </div>
+            <pre><code>def merge_sort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+
+    # 分解：找到中间索引
+    mid = len(arr) // 2
+
+    # 递归排序左右子数组
+    left_half = merge_sort(arr[:mid])
+    right_half = merge_sort(arr[mid:])
+
+    # 合并：将两个已排序的子数组合并
+    return merge(left_half, right_half)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+
+    # 比较两个子数组的元素
+    while i &lt; len(left) and j &lt; len(right):
+        if left[i] &lt;= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    # 添加剩余元素
+    result.extend(left[i:])
+    result.extend(right[j:])
+    
+    return result</code></pre>
+          </div>
+
+          <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
+            <h5 class="font-semibold text-red-800 mb-2">
+              <i class="fas fa-exclamation-circle mr-2"></i>性能问题
+            </h5>
+            <p class="text-red-700 text-sm">
+              基础版在每次合并时创建新列表，空间复杂度为 O(n log n)。优化版应避免频繁创建新数组。
+            </p>
+          </div>
+        </div>
+
+        <div id="merge-sort-optimized" class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">优化版代码实现</h3>
+
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="optimization-badge">辅助数组优化</span>
+            <span class="optimization-badge">哨兵值优化</span>
+            <span class="optimization-badge">提前终止检查</span>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>原地优化版（空间复杂度O(n)）</span>
+              <button class="text-blue-400 hover:text-blue-300 text-sm">
+                <i class="fas fa-copy mr-1"></i>复制
+              </button>
+            </div>
+            <pre><code>def merge_sort_optimized(arr):
+    if not arr:
+        return arr
+
+    temp_arr = [0] * len(arr)  # 预分配辅助数组
+    _merge_sort_helper(arr, temp_arr, 0, len(arr) - 1)
+    return arr
+
+def _merge_sort_helper(arr, temp_arr, left, right):
+    if left &lt; right:
+        mid = (left + right) // 2
+
+        # 递归排序左右子数组
+        _merge_sort_helper(arr, temp_arr, left, mid)
+        _merge_sort_helper(arr, temp_arr, mid + 1, right)
+
+        # 优化：如果已经有序，跳过合并
+        if arr[mid] &lt;= arr[mid + 1]:
+            return
+
+        _merge(arr, temp_arr, left, mid, right)
+
+def _merge(arr, temp_arr, left, mid, right):
+    # 复制到辅助数组
+    for i in range(left, right + 1):
+        temp_arr[i] = arr[i]
+
+    i = left       # 左子数组指针
+    j = mid + 1    # 右子数组指针
+    k = left       # 原始数组指针
+
+    # 合并过程
+    while i &lt;= mid and j &lt;= right:
+        if temp_arr[i] &lt;= temp_arr[j]:
+            arr[k] = temp_arr[i]
+            i += 1
+        else:
+            arr[k] = temp_arr[j]
+            j += 1
+        k += 1
+
+    # 复制剩余元素（只需处理左子数组）
+    while i &lt;= mid:
+        arr[k] = temp_arr[i]
+        i += 1
+        k += 1</code></pre>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
+              <h5 class="font-semibold text-green-800 mb-2">优化要点</h5>
+              <ul class="text-green-700 space-y-1 text-sm">
+                <li>• <strong>辅助数组复用</strong>：预分配并复用临时数组</li>
+                <li>• <strong>提前终止</strong>：检查arr[mid] ≤ arr[mid+1]</li>
+                <li>• <strong>优化合并</strong>：只需处理左子数组剩余元素</li>
+                <li>• <strong>原地排序</strong>：空间复杂度降至O(n)</li>
+              </ul>
+            </div>
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/imagegen/20251026/0217614712313516f73020c2cf1552f4952f9ff0fbcbf469f1250_0.jpeg" alt="展示归并排序算法中辅助数组使用情况的内存分配示意图" class="rounded-lg shadow-md max-w-full h-auto" size="medium" aspect="wide" style="linedrawing" query="归并排序辅助数组内存分配" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Performance Analysis -->
+      <section id="performance-analysis" class="algorithm-card">
+        <h2 class="text-3xl font-bold mb-6 serif">性能分析对比</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">时间复杂度对比</h3>
+            <div class="space-y-4">
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-800 mb-2">快速排序</h4>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">最好/平均情况</span>
+                  <span class="font-mono text-green-600">O(n log n)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">最坏情况</span>
+                  <span class="font-mono text-red-600">O(n²)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">实际性能</span>
+                  <span class="font-mono text-blue-600">平均最优</span>
+                </div>
+              </div>
+
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-800 mb-2">归并排序</h4>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">所有情况</span>
+                  <span class="font-mono text-green-600">O(n log n)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">稳定性</span>
+                  <span class="font-mono text-blue-600">稳定</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">性能波动</span>
+                  <span class="font-mono text-green-600">极小</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-4">空间复杂度对比</h3>
+            <div class="space-y-4">
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-800 mb-2">快速排序</h4>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">最好/平均情况</span>
+                  <span class="font-mono text-green-600">O(log n)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">最坏情况</span>
+                  <span class="font-mono text-yellow-600">O(n)</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">原地排序，主要开销在递归栈</p>
+              </div>
+
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-800 mb-2">归并排序</h4>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">所有情况</span>
+                  <span class="font-mono text-red-600">O(n)</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">需要额外存储空间进行合并操作</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">竞赛场景选择建议</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="text-center p-4 bg-blue-50 rounded-lg">
+              <h4 class="font-semibold text-blue-800 mb-2">追求极致速度</h4>
+              <p class="text-sm text-blue-700">选择快速排序 + 全套优化</p>
+              <div class="mt-2 text-xs text-blue-600">
+                适用于：时间限制严格的题目
+              </div>
+            </div>
+            <div class="text-center p-4 bg-green-50 rounded-lg">
+              <h4 class="font-semibold text-green-800 mb-2">需要稳定性</h4>
+              <p class="text-sm text-green-700">选择归并排序</p>
+              <div class="mt-2 text-xs text-green-600">
+                适用于：需要保持相对顺序的题目
+              </div>
+            </div>
+            <div class="text-center p-4 bg-purple-50 rounded-lg">
+              <h4 class="font-semibold text-purple-800 mb-2">处理重复元素</h4>
+              <p class="text-sm text-purple-700">快速排序三路划分</p>
+              <div class="mt-2 text-xs text-purple-600">
+                适用于：大量重复键值的题目
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section id="conclusion" class="algorithm-card">
+        <h2 class="text-3xl font-bold mb-6 serif">总结与展望</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">核心收获</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                <span>掌握了快速排序和归并排序的核心原理与实现技巧</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                <span>学会了通过可视化方式深入理解算法执行过程</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                <span>了解了算法竞赛中的各种优化策略</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                <span>能够根据具体场景选择合适的排序算法</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-4">进阶方向</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-blue-500 mr-3 mt-1"></i>
+                <span>研究更多高级排序算法（堆排序、计数排序等）</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-blue-500 mr-3 mt-1"></i>
+                <span>探索并行排序算法的实现与优化</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-blue-500 mr-3 mt-1"></i>
+                <span>结合具体应用场景进行算法定制</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-blue-500 mr-3 mt-1"></i>
+                <span>深入研究算法复杂度理论的极限</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 text-center">算法之美</h3>
+          <p class="text-gray-700 text-center italic">
+            &#34;优秀的算法如同精巧的艺术品，它们不仅解决了问题，更展现了计算思维的优雅与力量。
+            在算法竞赛的舞台上，每一次优化都是对完美的追求，每一行代码都是对智慧的诠释。&#34;
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center py-8 text-gray-500">
+        <div class="flex justify-center space-x-6 mb-4">
+          <a href="https://github.com/jsantana21/Sorting-Algorithm-Visualizer" class="citation" target="_blank">可视化参考[362]</a>
+          <a href="https://www.geeksforgeeks.org/dsa/merge-sort/" class="citation" target="_blank">归并排序详解[119]</a>
+          <a href="https://cloud.tencent.com/developer/article/2336546" class="citation" target="_blank">复杂度分析[108]</a>
+        </div>
+        <p>© 2024 Python排序算法可视化报告（竞赛版）</p>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#1e40af',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#64748b',
+                lineColor: '#64748b',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#e2e8f0',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#e2e8f0'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                useMaxWidth: false
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize Mermaid Controls after mermaid renders
+        setTimeout(() => {
+            initializeMermaidControls();
+        }, 1000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Calculate the actual scroll position considering fixed TOC height
+                    const tocHeight = document.querySelector('.toc-fixed').offsetHeight;
+                    const targetOffset = target.offsetTop - 100; // 100px buffer
+                    
+                    window.scrollTo({
+                        top: targetOffset,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in TOC
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('.toc-fixed a[href^="#"]');
+
+        function highlightActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('text-blue-600', 'font-semibold');
+                link.classList.add('text-gray-600');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.remove('text-gray-600');
+                    link.classList.add('text-blue-600', 'font-semibold');
+                }
+            });
+        }
+
+        // Handle window resize
+        function handleResize() {
+            const toc = document.querySelector('.toc-fixed');
+            const mainContent = document.querySelector('.main-content');
+            
+            if (window.innerWidth <= 1280) {
+                // For small screens, make TOC relative
+                toc.style.width = '100%';
+                toc.style.marginBottom = '2rem';
+                toc.style.position = 'relative';
+                toc.style.left = '0';
+                mainContent.style.marginLeft = '0';
+                mainContent.style.maxWidth = '100%';
+            } else {
+                // For large screens, make TOC fixed
+                toc.style.width = '280px';
+                toc.style.marginBottom = '0';
+                toc.style.position = 'fixed';
+                toc.style.left = '2rem';
+                mainContent.style.marginLeft = '320px';
+                mainContent.style.maxWidth = 'calc(100vw - 360px)';
+            }
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('resize', handleResize);
+        document.addEventListener('DOMContentLoaded', () => {
+            highlightActiveSection();
+            handleResize();
+        });
+
+        // Add copy functionality to code blocks
+        document.querySelectorAll('.code-header button').forEach(button => {
+            button.addEventListener('click', function() {
+                const codeBlock = this.closest('.code-block').querySelector('code');
+                if (codeBlock) {
+                    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check mr-1"></i>已复制';
+                        this.classList.add('text-green-400');
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.classList.remove('text-green-400');
+                        }, 2000);
+                    });
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
